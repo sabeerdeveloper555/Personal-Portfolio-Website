@@ -44,8 +44,8 @@ function Navbar({ darkMode, toggleTheme }) {
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
+      <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex w-full flex-wrap items-center justify-between gap-3 h-16 md:h-20">
           {/* Logo */}
           <a
             href="#home"
@@ -53,7 +53,7 @@ function Navbar({ darkMode, toggleTheme }) {
               e.preventDefault();
               scrollToSection("home");
             }}
-            className="font-heading font-bold text-xl md:text-2xl"
+            className="font-heading font-bold text-xl md:text-2xl min-w-0"
           >
             <span className="gradient-text">S</span>
             <span className={darkMode ? "text-white" : "text-slate-900"}>
@@ -66,6 +66,7 @@ function Navbar({ darkMode, toggleTheme }) {
             {NAV_LINKS.map((link) => (
               <button
                 key={link.id}
+                type="button"
                 onClick={() => scrollToSection(link.id)}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                   activeSection === link.id
@@ -81,9 +82,10 @@ function Navbar({ darkMode, toggleTheme }) {
           </div>
 
           {/* Right side buttons */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 shrink-0">
             {/* Theme Toggle */}
             <button
+              type="button"
               onClick={toggleTheme}
               className={`p-2.5 rounded-xl transition-all duration-200 ${
                 darkMode
@@ -97,6 +99,7 @@ function Navbar({ darkMode, toggleTheme }) {
 
             {/* Mobile Menu Toggle */}
             <button
+              type="button"
               onClick={() => setIsOpen(!isOpen)}
               className={`md:hidden p-2.5 rounded-xl transition-all duration-200 ${
                 darkMode
@@ -124,11 +127,12 @@ function Navbar({ darkMode, toggleTheme }) {
             <div
               className={`px-4 pb-4 space-y-1 ${
                 darkMode ? "bg-slate-900/95" : "bg-white/95"
-              } backdrop-blur-xl`}
+              } backdrop-blur-xl border-t ${darkMode ? "border-slate-700/80" : "border-slate-200/80"}`}
             >
               {NAV_LINKS.map((link, index) => (
                 <motion.button
                   key={link.id}
+                  type="button"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
@@ -144,6 +148,19 @@ function Navbar({ darkMode, toggleTheme }) {
                   {link.label}
                 </motion.button>
               ))}
+              <button
+                type="button"
+                onClick={toggleTheme}
+                className={`w-full mt-2 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
+                  darkMode
+                    ? "bg-white/5 text-yellow-400 hover:bg-white/10 hover:text-yellow-300"
+                    : "bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900"
+                }`}
+                aria-label="Toggle theme"
+              >
+                {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+                {darkMode ? "Light mode" : "Dark mode"}
+              </button>
             </div>
           </motion.div>
         )}

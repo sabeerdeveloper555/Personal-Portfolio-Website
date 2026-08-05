@@ -1,10 +1,4 @@
-import {
-  Hero,
-  About,
-  Skills,
-  Projects,
-  Contact,
-} from "../components";
+import { Hero, About, Skills, Projects, Education, Contact } from "../components";
 
 function Home({ darkMode }) {
   return (
@@ -13,6 +7,7 @@ function Home({ darkMode }) {
       <About darkMode={darkMode} />
       <Skills darkMode={darkMode} />
       <Projects darkMode={darkMode} />
+      <Education darkMode={darkMode} />
       <Contact darkMode={darkMode} />
     </>
   );

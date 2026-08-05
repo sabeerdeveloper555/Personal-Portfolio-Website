@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
 import { projects } from "../data/projects";
 import { GithubIcon } from "../utils/icons";
 
@@ -120,15 +119,6 @@ function Projects({ darkMode }) {
                   >
                     <GithubIcon size={16} />
                     GitHub
-                  </a>
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-cyan-500 to-emerald-500 text-white hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 hover:scale-105"
-                  >
-                    <ExternalLink size={16} />
-                    Live Demo
                   </a>
                 </div>
               </div>

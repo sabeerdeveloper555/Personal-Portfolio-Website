@@ -10,6 +10,15 @@
 }
 
 /* ─── Base Styles ─── */
+html,
+body,
+#root {
+  min-height: 100%;
+  width: 100%;
+  min-width: 100vw;
+  overflow-x: hidden;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -17,6 +26,13 @@ html {
 body {
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
+
+.light-mode {
+  background-color: #f8fafc;
+  color: #0f172a;
 }
 
 /* ─── Scrollbar ─── */

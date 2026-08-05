@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Mail, Download } from "lucide-react";
 import { PROFILE_IMAGE, HERO_TITLES, SOCIAL_LINKS } from "../utils/constants";
 import { GithubIcon, LinkedinIcon } from "../utils/icons";
+import resumePDF from "../assets/resume/SabeerAlam_Resume.pdf";
 
 function Hero({ darkMode }) {
   const [titleIndex, setTitleIndex] = useState(0);
@@ -21,14 +22,14 @@ function Hero({ darkMode }) {
   return (
     <section
       id="home"
-      className={`relative min-h-screen flex items-center pt-20 ${
+      className={`relative min-h-screen flex items-center pt-20 overflow-hidden ${
         darkMode ? "section-dark" : "section-light"
       }`}
     >
       {/* Background decorations */}
       <div className={`absolute inset-0 ${darkMode ? "bg-grid" : "bg-grid-light"} opacity-50`} />
-      <div className="absolute top-20 -left-40 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 -right-40 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl" />
+      <div className="absolute top-20 -left-20 sm:-left-40 w-64 sm:w-80 h-64 sm:h-80 bg-cyan-500/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 -right-20 sm:-right-40 w-64 sm:w-80 h-64 sm:h-80 bg-emerald-500/10 rounded-full blur-3xl" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-16">
@@ -102,8 +103,8 @@ function Hero({ darkMode }) {
                 Contact Me
               </button>
               <a
-                href="#"
-                onClick={(e) => e.preventDefault()}
+                href={resumePDF}
+                download="SabeerAlam_Resume.pdf"
                 className={`inline-flex items-center gap-2 px-8 py-3.5 font-medium rounded-xl border transition-all duration-300 hover:scale-105 ${
                   darkMode
                     ? "bg-white/5 text-white border-white/10 hover:bg-white/10 hover:border-cyan-400/30"

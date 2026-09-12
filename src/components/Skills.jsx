@@ -1,12 +1,10 @@
 import { motion } from "framer-motion";
-import { Monitor, Server, Database, Wrench } from "lucide-react";
+import { Monitor, Server } from "lucide-react";
 import { skillCategories } from "../data/skills";
 
 const iconMap = {
   monitor: Monitor,
   server: Server,
-  database: Database,
-  wrench: Wrench,
 };
 
 const colorMap = {
@@ -15,28 +13,12 @@ const colorMap = {
     darkTx: "text-cyan-400",
     lightBg: "bg-cyan-50",
     lightTx: "text-cyan-600",
-    bar: "from-cyan-500 to-cyan-400",
   },
   emerald: {
     darkBg: "bg-emerald-400/10",
     darkTx: "text-emerald-400",
     lightBg: "bg-emerald-50",
     lightTx: "text-emerald-600",
-    bar: "from-emerald-500 to-emerald-400",
-  },
-  purple: {
-    darkBg: "bg-purple-400/10",
-    darkTx: "text-purple-400",
-    lightBg: "bg-purple-50",
-    lightTx: "text-purple-600",
-    bar: "from-purple-500 to-purple-400",
-  },
-  orange: {
-    darkBg: "bg-orange-400/10",
-    darkTx: "text-orange-400",
-    lightBg: "bg-orange-50",
-    lightTx: "text-orange-600",
-    bar: "from-orange-500 to-orange-400",
   },
 };
 
@@ -79,12 +61,12 @@ function Skills({ darkMode }) {
               darkMode ? "text-slate-300" : "text-slate-600"
             }`}
           >
-            Technologies and tools I use to bring ideas to life
+            Core frontend, backend, and database technologies for MERN stack development.
           </p>
         </motion.div>
 
         {/* Skills Grid */}
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {skillCategories.map((category, catIndex) => {
             const colors = colorMap[category.color];
             const IconComp = iconMap[category.icon];
@@ -122,40 +104,9 @@ function Skills({ darkMode }) {
                   </h3>
                 </div>
 
-                {/* Skill Bars */}
-                <div className="space-y-4">
+                <div className="flex flex-wrap gap-2.5">
                   {category.skills.map((skill) => (
-                    <div key={skill.name}>
-                      <div className="flex justify-between items-center mb-1.5">
-                        <span
-                          className={`text-sm font-medium ${
-                            darkMode ? "text-slate-200" : "text-slate-700"
-                          }`}
-                        >
-                          {skill.name}
-                        </span>
-                        <span
-                          className={`text-xs ${
-                            darkMode ? "text-slate-400" : "text-slate-400"
-                          }`}
-                        >
-                          {skill.level}%
-                        </span>
-                      </div>
-                      <div
-                        className={`h-2 rounded-full overflow-hidden ${
-                          darkMode ? "bg-white/5" : "bg-slate-100"
-                        }`}
-                      >
-                        <motion.div
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${skill.level}%` }}
-                          viewport={{ once: true, amount: 0.5 }}
-                          transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
-                          className={`h-full rounded-full bg-gradient-to-r ${colors.bar}`}
-                        />
-                      </div>
-                    </div>
+                    <span key={skill} className={`rounded-lg px-3 py-2 text-sm font-medium ${darkMode ? "bg-white/5 text-slate-200" : "bg-slate-100 text-slate-700"}`}>{skill}</span>
                   ))}
                 </div>
               </motion.div>

@@ -15,8 +15,6 @@ body,
 #root {
   min-height: 100%;
   width: 100%;
-  min-width: 100vw;
-  overflow-x: hidden;
 }
 
 html {
@@ -25,7 +23,6 @@ html {
 
 body {
   font-family: 'Inter', sans-serif;
-  overflow-x: hidden;
   background-color: #0f172a;
   color: #e2e8f0;
 }
@@ -179,4 +176,13 @@ body {
 
 .toast-in {
   animation: slideInRight 0.3s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }

@@ -5,8 +5,9 @@ export const NAV_LINKS = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
   { id: "skills", label: "Skills" },
+  { id: "experience", label: "Experience" },
   { id: "projects", label: "Projects" },
-  { id: "education", label: "Education" },
+  { id: "services", label: "Services" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -26,12 +27,6 @@ export const SOCIAL_LINKS = [
     href: "mailto:alamsabeer05@gmail.com",
     label: "Email",
   },
-];
-
-export const HERO_TITLES = [
-  "Full Stack Developer",
-  "MERN Stack Developer",
-  "AI Solutions Builder",
 ];
 
 export const CONTACT_INFO = [

@@ -1,0 +1,10 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="760" rx="36" fill="#F8FAFC"/>
+  <rect x="70" y="60" width="1060" height="640" rx="26" fill="white" stroke="#CBD5E1" stroke-width="3"/>
+  <rect x="105" y="102" width="990" height="55" rx="12" fill="#F8FAFC"/><text x="140" y="138" fill="#0F172A" font-family="Arial, sans-serif" font-size="27" font-weight="700">Lumina</text><rect x="820" y="117" width="110" height="22" rx="11" fill="#E2E8F0"/><rect x="950" y="110" width="105" height="36" rx="18" fill="#0E7490"/>
+  <rect x="105" y="187" width="990" height="300" rx="20" fill="#ECFEFF"/>
+  <circle cx="940" cy="330" r="125" fill="#A5F3FC"/><circle cx="940" cy="330" r="85" fill="#0891B2"/><circle cx="940" cy="330" r="42" fill="#F0FDFA"/>
+  <text x="160" y="285" fill="#0F172A" font-family="Arial, sans-serif" font-size="52" font-weight="700">Work smarter with</text><text x="160" y="349" fill="#0E7490" font-family="Arial, sans-serif" font-size="52" font-weight="700">a brighter workflow.</text><rect x="160" y="390" width="190" height="48" rx="24" fill="#0E7490"/>
+  <rect x="105" y="522" width="290" height="125" rx="16" fill="#F0FDFA"/><rect x="420" y="522" width="290" height="125" rx="16" fill="#F8FAFC"/><rect x="735" y="522" width="360" height="125" rx="16" fill="#F0FDFA"/>
+  <rect x="138" y="555" width="130" height="16" rx="8" fill="#0E7490"/><rect x="138" y="590" width="215" height="12" rx="6" fill="#94A3B8"/><rect x="453" y="555" width="130" height="16" rx="8" fill="#0E7490"/><rect x="453" y="590" width="215" height="12" rx="6" fill="#94A3B8"/><rect x="768" y="555" width="130" height="16" rx="8" fill="#0E7490"/><rect x="768" y="590" width="280" height="12" rx="6" fill="#94A3B8"/>
+</svg>

@@ -89,8 +89,7 @@ function Contact({ darkMode }) {
               darkMode ? "text-slate-300" : "text-slate-600"
             }`}
           >
-            Have a project in mind or want to collaborate? Feel free to reach
-            out!
+            Let’s discuss website development, React projects, MERN applications, API development, or improvements to an existing site.
           </p>
         </motion.div>
 
@@ -200,6 +199,7 @@ function Contact({ darkMode }) {
               <div className="space-y-5">
                 <div>
                   <label
+                    htmlFor="contact-name"
                     className={`block text-sm font-medium mb-2 ${
                       darkMode ? "text-slate-200" : "text-slate-700"
                     }`}
@@ -207,6 +207,8 @@ function Contact({ darkMode }) {
                     Name
                   </label>
                   <input
+                    id="contact-name"
+                    name="name"
                     type="text"
                     value={formData.name}
                     onChange={(e) =>
@@ -220,6 +222,7 @@ function Contact({ darkMode }) {
 
                 <div>
                   <label
+                    htmlFor="contact-email"
                     className={`block text-sm font-medium mb-2 ${
                       darkMode ? "text-slate-200" : "text-slate-700"
                     }`}
@@ -227,6 +230,8 @@ function Contact({ darkMode }) {
                     Email
                   </label>
                   <input
+                    id="contact-email"
+                    name="email"
                     type="email"
                     value={formData.email}
                     onChange={(e) =>
@@ -240,6 +245,7 @@ function Contact({ darkMode }) {
 
                 <div>
                   <label
+                    htmlFor="contact-message"
                     className={`block text-sm font-medium mb-2 ${
                       darkMode ? "text-slate-200" : "text-slate-700"
                     }`}
@@ -247,6 +253,8 @@ function Contact({ darkMode }) {
                     Message
                   </label>
                   <textarea
+                    id="contact-message"
+                    name="message"
                     value={formData.message}
                     onChange={(e) =>
                       setFormData({ ...formData, message: e.target.value })
@@ -272,7 +280,7 @@ function Contact({ darkMode }) {
       </div>
 
       <Toast
-        message="Message sent successfully! I'll get back to you soon."
+        message="Your message was cleared locally. Please use the email link to send it."
         show={showToast}
         onClose={() => setShowToast(false)}
       />

@@ -13,6 +13,8 @@ import {
 import { SOCIAL_LINKS, CONTACT_INFO } from "../utils/constants";
 import { GithubIcon, LinkedinIcon } from "../utils/icons";
 
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 function Toast({ type, message, onClose }) {
   return (
     <motion.div
@@ -90,6 +92,11 @@ function Contact({ darkMode }) {
     e.preventDefault();
 
     if (isSubmitting) return;
+
+    if (!EMAIL_PATTERN.test(formData.email.trim())) {
+      showToast("error", "Please enter a valid email address.");
+      return;
+    }
 
     setIsSubmitting(true);
 

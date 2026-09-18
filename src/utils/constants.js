@@ -8,6 +8,7 @@ export const NAV_LINKS = [
   { id: "experience", label: "Experience" },
   { id: "projects", label: "Projects" },
   { id: "services", label: "Services" },
+  { id: "education", label: "Education" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -24,7 +25,7 @@ export const SOCIAL_LINKS = [
   },
   {
     name: "mail",
-    href: "mailto:alamsabeer05@gmail.com",
+    href: "mailto:sabeerdeveloper555@gmail.com",
     label: "Email",
   },
 ];
@@ -33,8 +34,8 @@ export const CONTACT_INFO = [
   {
     icon: "mail",
     label: "Email",
-    value: "alamsabeer05@gmail.com",
-    href: "mailto:alamsabeer05@gmail.com",
+    value: "sabeerdeveloper555@gmail.com",
+    href: "mailto:sabeerdeveloper555@gmail.com",
   },
   {
     icon: "phone",

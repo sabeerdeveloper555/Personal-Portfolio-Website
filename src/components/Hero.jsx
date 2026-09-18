@@ -6,6 +6,7 @@ import { GithubIcon, LinkedinIcon } from "../utils/icons";
 function Hero({ darkMode }) {
   const scrollTo = (id) =>
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+
   return (
     <section
       id="home"
@@ -14,7 +15,7 @@ function Hero({ darkMode }) {
       <div
         className={`absolute inset-0 ${darkMode ? "bg-grid" : "bg-grid-light"} opacity-30`}
       />
-      <div className="absolute right-0 top-24 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl" />
+      <div className="absolute right-0 top-24 h-48 w-48 rounded-full bg-[var(--color-primary)]/10 blur-3xl sm:h-72 sm:w-72" />
       <div className="relative mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-[1.25fr_0.75fr] lg:gap-16">
           <motion.div
@@ -23,42 +24,36 @@ function Hero({ darkMode }) {
             transition={{ duration: 0.55 }}
             className="text-center lg:text-left"
           >
-            <p
-              className={`mb-5 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-wider ${darkMode ? "border-cyan-400/20 bg-cyan-400/10 text-cyan-300" : "border-cyan-200 bg-cyan-50 text-cyan-700"}`}
-            >
-              <span className="h-2 w-2 rounded-full bg-emerald-400" /> Available
-              for freelance opportunities
+            <p className="mb-5 inline-flex max-w-full flex-wrap items-center justify-center gap-2 rounded-full border border-[var(--color-primary)]/30 bg-[var(--color-primary-soft)] px-3 py-2 text-center font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-[var(--color-primary)] sm:px-4 sm:text-xs sm:tracking-[0.2em]">
+              <span className="h-2 w-2 rounded-full bg-[var(--color-accent)]" />{" "}
+              &gt; Available for freelance opportunities
             </p>
-            <h1
-              className={`font-heading text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl ${darkMode ? "text-white" : "text-slate-900"}`}
-            >
+            <h1 className="max-w-[14ch] break-words font-heading text-4xl font-bold leading-[0.98] text-[var(--color-text-primary)] sm:max-w-[12ch] sm:text-5xl lg:max-w-none lg:text-6xl xl:text-7xl">
               MERN Stack Developer building{" "}
               <span className="gradient-text">modern web applications.</span>
             </h1>
-            <p
-              className={`mx-auto mt-6 max-w-2xl text-base leading-relaxed sm:text-lg lg:mx-0 ${darkMode ? "text-slate-300" : "text-slate-600"}`}
-            >
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[var(--color-text-secondary)] sm:text-lg lg:mx-0">
               I build responsive, functional web applications using React,
               Node.js, Express, and MongoDB, with a focus on clean UI, reliable
               functionality, and practical user experiences.
             </p>
-            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
+            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap lg:justify-start">
               <button
                 type="button"
                 onClick={() => scrollTo("projects")}
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-cyan-600 px-6 py-3.5 font-medium text-white transition hover:bg-cyan-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-400"
+                className="btn-glow inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--color-primary)] px-6 py-3.5 font-medium text-white transition hover:bg-[var(--color-primary-hover)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[var(--color-accent)] sm:w-auto"
               >
                 View Featured Work <ArrowDown size={18} />
               </button>
               <button
                 type="button"
                 onClick={() => scrollTo("contact")}
-                className={`inline-flex items-center justify-center gap-2 rounded-xl border px-6 py-3.5 font-medium transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-400 ${darkMode ? "border-white/15 text-white hover:bg-white/10" : "border-slate-300 text-slate-800 hover:bg-slate-50"}`}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] px-6 py-3.5 font-medium text-[var(--color-text-primary)] transition hover:border-[var(--color-primary)] hover:bg-[var(--color-primary-soft)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[var(--color-accent)] sm:w-auto"
               >
                 <Mail size={18} /> Start a Project
               </button>
             </div>
-            <div className="mt-8 flex justify-center gap-3 lg:justify-start">
+            <div className="mt-8 flex flex-wrap justify-center gap-3 lg:justify-start">
               {SOCIAL_LINKS.map((social) => (
                 <a
                   key={social.name}
@@ -66,7 +61,7 @@ function Hero({ darkMode }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className={`rounded-lg p-2.5 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-400 ${darkMode ? "text-slate-300 hover:bg-white/10 hover:text-white" : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"}`}
+                  className="rounded-lg p-2.5 text-[var(--color-text-secondary)] transition hover:bg-[var(--color-surface-hover)] hover:text-[var(--color-text-primary)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[var(--color-accent)]"
                 >
                   {social.name === "github" && <GithubIcon size={20} />}
                   {social.name === "linkedin" && <LinkedinIcon size={20} />}
@@ -79,11 +74,9 @@ function Hero({ darkMode }) {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.55, delay: 0.1 }}
-            className="mx-auto w-full max-w-sm"
+            className="mx-auto w-full max-w-[20rem] sm:max-w-md lg:max-w-sm"
           >
-            <div
-              className={`rounded-3xl p-3 shadow-xl ${darkMode ? "border border-white/10 bg-slate-800/60" : "border border-slate-200 bg-white"}`}
-            >
+            <div className="overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3 shadow-[0_20px_40px_rgba(220,20,60,0.08)]">
               <img
                 src={PROFILE_IMAGE}
                 alt="Sabeer Alam"
@@ -96,4 +89,5 @@ function Hero({ darkMode }) {
     </section>
   );
 }
+
 export default Hero;

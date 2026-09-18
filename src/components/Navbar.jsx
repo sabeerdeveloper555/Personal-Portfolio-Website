@@ -7,9 +7,7 @@ import { useActiveSection } from "../hooks/useActiveSection";
 function Navbar({ darkMode, toggleTheme }) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const activeSection = useActiveSection(
-    NAV_LINKS.map((l) => l.id)
-  );
+  const activeSection = useActiveSection(NAV_LINKS.map((l) => l.id));
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -17,63 +15,78 @@ function Navbar({ darkMode, toggleTheme }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on resize
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 768) setIsOpen(false);
+      if (window.innerWidth >= 1024) setIsOpen(false);
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const scrollToSection = (id) => {
+  const handleNavigation = (id) => {
     setIsOpen(false);
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+
+    window.setTimeout(() => {
+      const section = document.getElementById(id);
+
+      if (!section) return;
+
+      const navbarHeight = window.innerWidth >= 1024 ? 80 : 64;
+      const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+
+      window.scrollTo({
+        top: Math.max(0, sectionTop - navbarHeight),
+        behavior: "smooth",
+      });
+    }, 0);
   };
+
+  const navStyle = scrolled
+    ? {
+        backgroundColor: darkMode
+          ? "rgba(11, 11, 13, 0.96)"
+          : "rgba(250, 250, 249, 0.96)",
+        borderBottom: "1px solid var(--color-border)",
+        boxShadow: "0 12px 28px rgba(220, 20, 60, 0.08)",
+      }
+    : {
+        backgroundColor: "transparent",
+        borderBottom: "none",
+        boxShadow: "none",
+      };
 
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? darkMode
-            ? "bg-slate-900/80 backdrop-blur-xl border-b border-white/5 shadow-lg shadow-black/20"
-            : "bg-white/80 backdrop-blur-xl border-b border-slate-200/80 shadow-lg shadow-slate-200/50"
-          : "bg-transparent"
-      }`}
+      className="fixed left-0 right-0 top-0 z-50 transition-all duration-300 backdrop-blur-xl"
+      style={navStyle}
     >
-      <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex w-full flex-wrap items-center justify-between gap-3 h-16 md:h-20">
-          {/* Logo */}
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 w-full items-center justify-between gap-2 sm:gap-3 lg:h-20">
           <a
             href="#home"
             onClick={(e) => {
               e.preventDefault();
-              scrollToSection("home");
+              handleNavigation("home");
             }}
-            className="font-heading font-bold text-xl md:text-2xl min-w-0"
+            className="min-w-0 shrink-0 font-heading text-xl font-bold lg:text-2xl"
           >
             <span className="gradient-text">S</span>
-            <span className={darkMode ? "text-white" : "text-slate-900"}>
-              abeer
-            </span>
+            <span className="text-[var(--color-text-primary)]">abeer</span>
           </a>
 
-          {/* Desktop Nav Links */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden items-center gap-1 lg:flex">
             {NAV_LINKS.map((link) => (
               <button
                 key={link.id}
                 type="button"
-                onClick={() => scrollToSection(link.id)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                onClick={() => handleNavigation(link.id)}
+                className={`rounded-lg px-4 py-2 text-sm font-medium transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[var(--color-accent)] ${
                   activeSection === link.id
-                    ? "text-cyan-400 bg-cyan-400/10"
-                    : darkMode
-                      ? "text-slate-400 hover:text-white hover:bg-white/5"
-                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+                    ? "bg-[var(--color-primary-soft)] text-[var(--color-primary)]"
+                    : "text-[var(--color-text-secondary)] hover:bg-[var(--color-surface-hover)] hover:text-[var(--color-text-primary)]"
                 }`}
               >
                 {link.label}
@@ -81,31 +94,20 @@ function Navbar({ darkMode, toggleTheme }) {
             ))}
           </div>
 
-          {/* Right side buttons */}
-          <div className="flex items-center gap-2 shrink-0">
-            {/* Theme Toggle */}
+          <div className="flex shrink-0 items-center gap-2">
             <button
               type="button"
               onClick={toggleTheme}
-              className={`p-2.5 rounded-xl transition-all duration-200 ${
-                darkMode
-                  ? "bg-white/5 text-yellow-400 hover:bg-white/10 hover:text-yellow-300"
-                  : "bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900"
-              }`}
+              className="flex h-10 w-10 items-center justify-center rounded-xl text-[var(--color-text-primary)] transition-all duration-200 hover:bg-[var(--color-surface-hover)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[var(--color-accent)]"
               aria-label="Toggle theme"
             >
               {darkMode ? <Sun size={18} /> : <Moon size={18} />}
             </button>
 
-            {/* Mobile Menu Toggle */}
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className={`md:hidden p-2.5 rounded-xl transition-all duration-200 ${
-                darkMode
-                  ? "bg-white/5 text-white hover:bg-white/10"
-                  : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-              }`}
+              className="flex h-10 w-10 items-center justify-center rounded-xl text-[var(--color-text-primary)] transition-all duration-200 hover:bg-[var(--color-surface-hover)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[var(--color-accent)] lg:hidden"
               aria-label="Toggle menu"
             >
               {isOpen ? <X size={20} /> : <Menu size={20} />}
@@ -114,7 +116,6 @@ function Navbar({ darkMode, toggleTheme }) {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -122,13 +123,9 @@ function Navbar({ darkMode, toggleTheme }) {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden overflow-hidden"
+            className="overflow-hidden lg:hidden"
           >
-            <div
-              className={`px-4 pb-4 space-y-1 ${
-                darkMode ? "bg-slate-900/95" : "bg-white/95"
-              } backdrop-blur-xl border-t ${darkMode ? "border-slate-700/80" : "border-slate-200/80"}`}
-            >
+            <div className="space-y-1 border-t border-[var(--color-border)] bg-[var(--color-bg-secondary)] px-4 pb-4 backdrop-blur-xl">
               {NAV_LINKS.map((link, index) => (
                 <motion.button
                   key={link.id}
@@ -136,31 +133,16 @@ function Navbar({ darkMode, toggleTheme }) {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
-                  onClick={() => scrollToSection(link.id)}
-                  className={`block w-full text-left px-4 py-3 rounded-xl text-sm font-medium transition-all ${
+                  onClick={() => handleNavigation(link.id)}
+                  className={`block w-full rounded-xl px-4 py-3 text-left text-sm font-medium transition-all focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[var(--color-accent)] ${
                     activeSection === link.id
-                      ? "text-cyan-400 bg-cyan-400/10"
-                      : darkMode
-                        ? "text-slate-400 hover:text-white hover:bg-white/5"
-                        : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+                      ? "bg-[var(--color-primary-soft)] text-[var(--color-primary)]"
+                      : "text-[var(--color-text-secondary)] hover:bg-[var(--color-surface-hover)] hover:text-[var(--color-text-primary)]"
                   }`}
                 >
                   {link.label}
                 </motion.button>
               ))}
-              <button
-                type="button"
-                onClick={toggleTheme}
-                className={`w-full mt-2 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
-                  darkMode
-                    ? "bg-white/5 text-yellow-400 hover:bg-white/10 hover:text-yellow-300"
-                    : "bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900"
-                }`}
-                aria-label="Toggle theme"
-              >
-                {darkMode ? <Sun size={18} /> : <Moon size={18} />}
-                {darkMode ? "Light mode" : "Dark mode"}
-              </button>
             </div>
           </motion.div>
         )}

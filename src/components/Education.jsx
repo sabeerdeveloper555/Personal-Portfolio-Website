@@ -43,54 +43,32 @@ function Education({ darkMode }) {
   return (
     <section
       id="education"
-      className={`relative py-24 md:py-32 ${
-        darkMode ? "section-dark" : "section-light"
-      }`}
+      className={`relative py-24 md:py-32 ${darkMode ? "section-dark" : "section-light"}`}
     >
       <div
-        className={`absolute inset-0 ${
-          darkMode ? "bg-grid" : "bg-grid-light"
-        } opacity-30`}
+        className={`absolute inset-0 ${darkMode ? "bg-grid" : "bg-grid-light"} opacity-30`}
       />
-      <div className="absolute top-0 left-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl" />
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+      <div className="absolute left-0 top-0 h-96 w-96 rounded-full bg-[var(--color-primary)]/5 blur-3xl" />
+      <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-[var(--color-accent)]/5 blur-3xl" />
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-16 text-center"
         >
-          <span
-            className={`inline-block px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase mb-4 ${
-              darkMode
-                ? "bg-cyan-400/10 text-cyan-400 border border-cyan-400/20"
-                : "bg-cyan-50 text-cyan-600 border border-cyan-200"
-            }`}
-          >
-            Education
+          <span className="mb-4 inline-block border border-[var(--color-primary)]/20 bg-[var(--color-primary-soft)] px-4 py-1.5 font-mono text-xs font-medium uppercase tracking-[0.2em] text-[var(--color-primary)]">
+            06 / Education
           </span>
-          <h2
-            className={`font-heading text-3xl md:text-4xl font-bold ${
-              darkMode ? "text-white" : "text-slate-900"
-            }`}
-          >
+          <h2 className="font-heading text-3xl font-bold text-[var(--color-text-primary)] md:text-4xl">
             My <span className="gradient-text">Education</span>
           </h2>
-          <p
-            className={`mt-4 text-base max-w-2xl mx-auto ${
-              darkMode ? "text-slate-300" : "text-slate-600"
-            }`}
-          >
+          <p className="mx-auto mt-4 max-w-2xl text-base text-[var(--color-text-secondary)]">
             Academic background and professional training
           </p>
         </motion.div>
-
-        {/* Education Cards */}
-        <div className="max-w-4xl mx-auto space-y-8">
+        <div className="mx-auto max-w-4xl space-y-8">
           {educationData.map((edu, index) => (
             <motion.div
               key={edu.institution}
@@ -98,26 +76,13 @@ function Education({ darkMode }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className={`relative rounded-2xl overflow-hidden card-hover ${
-                darkMode
-                  ? "glass"
-                  : "bg-white shadow-lg shadow-slate-200/50 border border-slate-100"
-              }`}
+              className="card-hover relative overflow-hidden rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] shadow-[0_18px_30px_rgba(220,20,60,0.04)]"
             >
-              {/* Top accent line */}
-              <div className="h-1 bg-gradient-to-r from-cyan-500 to-emerald-500" />
-
-              <div className="p-6 md:p-8">
-                <div className="flex flex-col md:flex-row gap-6">
-                  {/* Left — Icon & Status */}
-                  <div className="flex flex-row md:flex-col items-start md:items-center gap-4 md:gap-3 flex-shrink-0">
-                    <div
-                      className={`p-4 rounded-2xl ${
-                        darkMode
-                          ? "bg-cyan-400/10 text-cyan-400"
-                          : "bg-cyan-50 text-cyan-600"
-                      }`}
-                    >
+              <div className="h-1 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)]" />
+              <div className="p-5 sm:p-6 md:p-8">
+                <div className="flex flex-col gap-6 md:flex-row">
+                  <div className="flex min-w-0 shrink-0 flex-row flex-wrap items-start gap-4 sm:items-center md:flex-col md:items-center md:gap-3">
+                    <div className="rounded-xl bg-[var(--color-primary-soft)] p-4 text-[var(--color-primary)]">
                       {index === 0 ? (
                         <Award size={28} />
                       ) : (
@@ -125,92 +90,58 @@ function Education({ darkMode }) {
                       )}
                     </div>
                     <span
-                      className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium ${
-                        edu.status === "Graduated"
-                          ? darkMode
-                            ? "bg-emerald-400/10 text-emerald-400 border border-emerald-400/20"
-                            : "bg-emerald-50 text-emerald-600 border border-emerald-200"
-                          : darkMode
-                            ? "bg-cyan-400/10 text-cyan-400 border border-cyan-400/20"
-                            : "bg-cyan-50 text-cyan-600 border border-cyan-200"
-                      }`}
+                      className={`inline-flex items-center gap-1.5 px-3 py-1.5 font-mono text-xs font-medium ${edu.status === "Graduated" ? "border border-[var(--color-accent)]/20 bg-[var(--color-accent-soft)] text-[var(--color-accent)]" : "border border-[var(--color-primary)]/20 bg-[var(--color-primary-soft)] text-[var(--color-primary)]"}`}
                     >
                       {edu.status === "Graduated" ? (
                         <Award size={12} />
                       ) : (
-                        <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse" />
+                        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[var(--color-accent)]" />
                       )}
                       {edu.status}
                     </span>
                   </div>
-
-                  {/* Right — Details */}
-                  <div className="flex-1">
-                    <h3
-                      className={`font-heading text-xl md:text-2xl font-semibold mb-2 ${
-                        darkMode ? "text-white" : "text-slate-900"
-                      }`}
-                    >
+                  <div className="min-w-0 flex-1">
+                    <h3 className="mb-2 break-words font-heading text-xl font-semibold text-[var(--color-text-primary)] md:text-2xl">
                       {edu.institution}
                     </h3>
-
-                    <p className="gradient-text font-heading font-semibold text-base md:text-lg mb-3">
+                    <p className="mb-3 font-heading text-base font-semibold text-[var(--color-accent)] md:text-lg">
                       {edu.degree}
                     </p>
-
-                    {/* Duration & Location */}
-                    <div className="flex flex-wrap items-center gap-4 mb-4">
-                      <span
-                        className={`inline-flex items-center gap-1.5 text-sm ${
-                          darkMode ? "text-slate-300" : "text-slate-600"
-                        }`}
-                      >
-                        <Calendar size={15} className="text-cyan-400" />
+                    <div className="mb-4 flex flex-wrap items-center gap-4">
+                      <span className="inline-flex items-center gap-1.5 text-sm text-[var(--color-text-secondary)]">
+                        <Calendar
+                          size={15}
+                          className="text-[var(--color-primary)]"
+                        />
                         {edu.duration}
                       </span>
-                      <span
-                        className={`inline-flex items-center gap-1.5 text-sm ${
-                          darkMode ? "text-slate-300" : "text-slate-600"
-                        }`}
-                      >
-                        <MapPin size={15} className="text-emerald-400" />
+                      <span className="inline-flex items-center gap-1.5 text-sm text-[var(--color-text-secondary)]">
+                        <MapPin
+                          size={15}
+                          className="text-[var(--color-accent)]"
+                        />
                         {edu.location}
                       </span>
                     </div>
-
-                    {/* Description */}
-                    <p
-                      className={`text-sm leading-relaxed mb-5 ${
-                        darkMode ? "text-slate-300" : "text-slate-600"
-                      }`}
-                    >
+                    <p className="mb-5 text-sm leading-relaxed text-[var(--color-text-secondary)]">
                       {edu.description}
                     </p>
-
-                    {/* Highlights */}
-                    <div>
-                      <p
-                        className={`text-xs font-medium uppercase tracking-wider mb-2.5 ${
-                          darkMode ? "text-slate-400" : "text-slate-500"
-                        }`}
-                      >
-                        Key Coursework
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        {edu.highlights.map((item) => (
-                          <span
-                            key={item}
-                            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium ${
-                              darkMode
-                                ? "bg-white/5 text-slate-200 border border-white/10"
-                                : "bg-slate-50 text-slate-600 border border-slate-200"
-                            }`}
-                          >
-                            <Award size={12} className="text-cyan-400" />
-                            {item}
-                          </span>
-                        ))}
-                      </div>
+                    <p className="mb-2.5 font-mono text-xs font-medium uppercase tracking-[0.2em] text-[var(--color-text-muted)]">
+                      Key Coursework
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {edu.highlights.map((item) => (
+                        <span
+                          key={item}
+                          className="inline-flex items-center gap-1.5 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)] px-3 py-1.5 font-mono text-xs font-medium text-[var(--color-text-secondary)]"
+                        >
+                          <Award
+                            size={12}
+                            className="text-[var(--color-primary)]"
+                          />
+                          {item}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </div>

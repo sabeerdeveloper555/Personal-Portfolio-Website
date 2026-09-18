@@ -8,8 +8,8 @@ function ThemeToggle({ darkMode, toggleTheme }) {
       onClick={toggleTheme}
       className={`p-2.5 rounded-xl transition-all duration-200 ${
         darkMode
-          ? "bg-white/5 text-yellow-400 hover:bg-white/10 hover:text-yellow-300"
-          : "bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900"
+          ? "bg-white/5 text-orange-300 hover:bg-red-400/10 hover:text-orange-200"
+          : "bg-stone-200 text-stone-700 hover:bg-red-50 hover:text-red-700"
       }`}
       aria-label="Toggle theme"
     >

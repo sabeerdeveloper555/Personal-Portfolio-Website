@@ -28,6 +28,9 @@
   --color-success: #f97316;
   --color-error: #ef4444;
   --color-overlay: rgba(0, 0, 0, 0.55);
+  --scrollbar-track: #111114;
+  --scrollbar-thumb: #3a3a42;
+  --scrollbar-thumb-hover: #dc143c;
 }
 
 html,
@@ -46,6 +49,7 @@ body,
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }
 
 section[id] {
@@ -113,6 +117,9 @@ select {
   --color-success: #c2410c;
   --color-error: #b91c1c;
   --color-overlay: rgba(0, 0, 0, 0.15);
+  --scrollbar-track: #f4f4f2;
+  --scrollbar-thumb: #8f8f94;
+  --scrollbar-thumb-hover: #8f0d29;
 }
 
 .text-primary {
@@ -176,16 +183,16 @@ select {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-bg-secondary);
+  background: var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-border-strong);
-  border-radius: 4px;
+  background: var(--scrollbar-thumb);
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary);
+  background: var(--scrollbar-thumb-hover);
 }
 
 .glass {

@@ -16,13 +16,13 @@ function Hero({ darkMode }) {
         className={`absolute inset-0 ${darkMode ? "bg-grid" : "bg-grid-light"} opacity-30`}
       />
       <div className="absolute right-0 top-24 h-48 w-48 rounded-full bg-[var(--color-primary)]/10 blur-3xl sm:h-72 sm:w-72" />
-      <div className="relative mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.25fr_0.75fr] lg:gap-16">
+      <div className="relative mx-auto flex w-full max-w-7xl items-center px-4 py-20 sm:px-6 lg:px-8">
+        <div className="grid w-full items-center justify-items-center gap-12">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55 }}
-            className="text-center lg:text-left"
+            className="order-2 mx-auto max-w-4xl text-center"
           >
             <p className="mb-5 inline-flex max-w-full flex-wrap items-center justify-center gap-2 rounded-full border border-[var(--color-primary)]/30 bg-[var(--color-primary-soft)] px-3 py-2 text-center font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-[var(--color-primary)] sm:px-4 sm:text-xs sm:tracking-[0.2em]">
               <span className="h-2 w-2 rounded-full bg-[var(--color-accent)]" />{" "}
@@ -32,12 +32,12 @@ function Hero({ darkMode }) {
               MERN Stack Developer building{" "}
               <span className="gradient-text">modern web applications.</span>
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[var(--color-text-secondary)] sm:text-lg lg:mx-0">
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[var(--color-text-secondary)] sm:text-lg">
               I build responsive, functional web applications using React,
               Node.js, Express, and MongoDB, with a focus on clean UI, reliable
               functionality, and practical user experiences.
             </p>
-            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap lg:justify-start">
+            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">
               <button
                 type="button"
                 onClick={() => scrollTo("projects")}
@@ -53,7 +53,7 @@ function Hero({ darkMode }) {
                 <Mail size={18} /> Start a Project
               </button>
             </div>
-            <div className="mt-8 flex flex-wrap justify-center gap-3 lg:justify-start">
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
               {SOCIAL_LINKS.map((social) => (
                 <a
                   key={social.name}
@@ -74,13 +74,13 @@ function Hero({ darkMode }) {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.55, delay: 0.1 }}
-            className="mx-auto w-full max-w-[20rem] sm:max-w-md lg:max-w-sm"
+            className="order-1 mx-auto w-full max-w-[18rem] sm:max-w-md"
           >
-            <div className="overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3 shadow-[0_20px_40px_rgba(220,20,60,0.08)]">
+            <div className="aspect-square overflow-hidden rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] p-3 shadow-[0_20px_40px_rgba(220,20,60,0.08)]">
               <img
                 src={PROFILE_IMAGE}
                 alt="Sabeer Alam"
-                className="aspect-square w-full rounded-2xl object-cover"
+                className="h-full w-full rounded-full object-cover"
               />
             </div>
           </motion.div>

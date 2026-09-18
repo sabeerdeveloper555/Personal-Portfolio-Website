@@ -8,6 +8,7 @@ export function useTheme() {
 
   useEffect(() => {
     localStorage.setItem("theme", darkMode ? "dark" : "light");
+    document.documentElement.classList.toggle("light-mode", !darkMode);
   }, [darkMode]);
 
   const toggleTheme = () => setDarkMode((prev) => !prev);

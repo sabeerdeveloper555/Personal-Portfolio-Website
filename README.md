@@ -14,6 +14,20 @@ This portfolio is more than a personal landing page—it is a professional showc
 
 ## Featured Projects
 
+### BizFlow — Business Management System
+A full-stack business management system for managing customers, products and inventory, orders, staff accounts, and operational dashboard metrics with authentication and role-based access control.
+
+Live Demo: https://bizflow-frontend-self.vercel.app
+GitHub: https://github.com/sabeerdeveloper555/BizzFlow-Business-Management-System
+
+Highlights:
+- dashboard, customer, product/inventory, order, and staff management
+- JWT authentication with bcrypt password hashing and protected routes
+- admin/staff role-based access control (RBAC)
+- server-side order totals, stock validation, and validated order status transitions
+- built with React, Vite, Tailwind CSS, Node.js, Express.js, MongoDB, and Mongoose
+- deployed to production on Vercel
+
 ### FreelanceHub-PK
 A full-stack freelance work management platform designed to manage clients, projects, budgets, deadlines, and operational status within a structured, secure workspace.
 

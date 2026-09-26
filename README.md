@@ -18,7 +18,7 @@ This portfolio is more than a personal landing page—it is a professional showc
 A full-stack business management system for managing customers, products and inventory, orders, staff accounts, and operational dashboard metrics with authentication and role-based access control.
 
 Live Demo: https://bizflow-frontend-self.vercel.app
-GitHub: https://github.com/sabeerdeveloper555/BizzFlow-Business-Management-System
+GitHub: https://github.com/sabeerdeveloper555/BizFlow-Business-Management-System
 
 Highlights:
 - dashboard, customer, product/inventory, order, and staff management

@@ -22,7 +22,7 @@ export const projects = [
     ],
     image: bizflowDashboardImage,
     imageAlt: "BizFlow admin dashboard",
-    github: "https://github.com/sabeerdeveloper555/BizzFlow-Business-Management-System",
+    github: "https://github.com/sabeerdeveloper555/BizFlow-Business-Management-System",
     live: "https://bizflow-frontend-self.vercel.app",
   },
   {
